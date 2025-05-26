@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor do Brasil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <img src="img/logo_sabor_do_brasil.png" alt="Logo" class="logo-header">
+        <span class="titulo-header">SABOR BRASIL</span>
+    </header>
+
+    <div class="container">
+        <aside class="perfil">
+            <img id="logo-empresa" src="img/logo_sabor_do_brasil.png" alt="Logo" width="100">
+            <h2 id="nome-empresa">SABOR BRASIL</h2>
+            <hr>
+            <p>Likes: <span id="total-likes">0</span></p>
+            <p>Dislikes: <span id="total-dislikes">0</span></p>
+            <button id="btn-alterar-perfil">Alterar Perfil</button>
+        </aside>
+
+        <main class="principal">
+            <h2>Publicações</h2>
+
+            <div class="publicacao" data-publicacao-id="1">
+                <img src="img/publicacao01.png" alt="Camarão Frito">
+                <h3>Camarão Frito</h3>
+                <p>Micale Maceió-AL</p>
+                <div class="interacoes">
+                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <span class="likes">0</span>
+                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <span class="dislikes">0</span>
+                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <span class="num-comentarios">0</span>
+                </div>
+                <div class="comentario-container">
+                    <div class="comentario-usuario">
+                        <span class="comentario-nome">Nome do Usuário</span>
+                    </div>
+                    <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
+                    <button class="btn-comentar" disabled>Comentar</button>
+                    <div class="comentarios-lista"></div>
+                </div>
+            </div>
+
+            <div class="publicacao" data-publicacao-id="2">
+                <img src="img/publicacao02.png" alt="Bolo de Carne">
+                <h3>Bolo de Carne</h3>
+                <p>BR-381 Minas Gerais-MG</p>
+                <div class="interacoes">
+                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <span class="likes">0</span>
+                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <span class="dislikes">0</span>
+                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <span class="num-comentarios">0</span>
+                </div>
+                <div class="comentario-container">
+                    <div class="comentario-usuario">
+                        <span class="comentario-nome">Nome do Usuário</span>
+                    </div>
+                    <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
+                    <button class="btn-comentar" disabled>Comentar</button>
+                    <div class="comentarios-lista"></div>
+                </div>
+            </div>
+
+            <div class="publicacao" data-publicacao-id="3">
+                <img src="img/publicacao03.png" alt="Bife com Legumes">
+                <h3>Bife com Legumes</h3>
+                <p>Joaquina Rio de Janeiro-RJ</p>
+                <div class="interacoes">
+                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <span class="likes">0</span>
+                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <span class="dislikes">0</span>
+                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <span class="num-comentarios">0</span>
+                </div>
+                <div class="comentario-container">
+                    <div class="comentario-usuario">
+                        <span class="comentario-nome">Nome do Usuário</span>
+                    </div>
+                    <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
+                    <button class="btn-comentar" disabled>Comentar</button>
+                    <div class="comentarios-lista"></div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="login-header">
+            <button id="btn-login">Entrar</button>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Food Network</p>
+        <p class="social">
+            <img src="img/Instagram.svg" alt="Instagram" width="20">
+            <img src="img/Twitter.svg" alt="Twitter" width="20">
+            <img src="img/Whatsapp.svg" alt="Whatsapp" width="20">
+            <img src="img/Globe.svg" alt="Globe" width="20">
+        </p>
+        <p>&copy; 2024 - Sabor do Brasil</p>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div class="modal-login" id="modal-login">
+        <div class="modal-conteudo">
+            <h2>Login</h2>
+            <input type="text" id="nickname" placeholder="E-mail" required>
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button id="btn-cancelar">Cancelar</button>
+            <button id="btn-entrar">Entrar</button>
+            <p class="mensagem-erro" id="mensagem-erro"></p>
+            <p class="cadastro-link">
+                Não tem uma conta? <a href="#" id="abrir-cadastro">Cadastre-se</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/cadastro.js"></script>
+    <script src="js/interações.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+
+</html>

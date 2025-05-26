@@ -1,0 +1,140 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header h2 {
+    font-size: 24px;
+    color: #D97014;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+form input[type="file"],
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D97014;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #D97014;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #c16312;
+}
+
+/* Mensagens de sucesso e erro */
+#mensagem-sucesso,
+#mensagem-erro {
+    display: none;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+#mensagem-sucesso {
+    background-color: #e0f7e0;
+    color: green;
+    border: 1px solid green;
+}
+
+#mensagem-erro {
+    background-color: #f8d7da;
+    color: red;
+    border: 1px solid red;
+}
+
+/* Estilos gerais */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #D97014;
+    padding: 10px 0;
+}
+
+footer p {
+    color: white;
+    font-size: 16px;
+}
+
+#ln{
+	color: #D97014;
+}
+#logo{
+	font-size:25px;
+
+}
+.cabecalho{
+	margin: 0 auto;
+	text-align: center;
+	height: 300px;
+	font-weight: bold;
+	margin-top: 52px;
+	
+		
+}
+
+footer {
+    position: fixed;
+    bottom: 0; 
+    width: 100%;  
+    display: flex;
+    justify-content: space-around;
+    background-color: #D97014;
+    padding: 10px 0;
+    color: white; 
+}
+
+.social {
+    display: flex;
+    gap: 30px;
+}
+
+body {
+    padding-bottom: 60px; 
+}
+#in{
+    color: #c16312;
+    font-size: 10px;
+    font-weight: bold;
+}
