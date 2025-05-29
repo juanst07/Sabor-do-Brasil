@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mensagemErro = document.getElementById('mensagem-erro');
     const mensagemSucesso = document.getElementById('mensagem-sucesso');
 
-    formCadastro.addEventListener('submit', function(e) {
+    formCadastro.addEventListener('submit', async function(e) {
         e.preventDefault();
         btnCadastrar.disabled = true;
         mensagemErro.textContent = '';
@@ -34,12 +34,23 @@ document.addEventListener('DOMContentLoaded', function() {
         usuarios.push({ nome, email, senha });
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-        mensagemSucesso.textContent = 'Cadastro realizado com sucesso! Você já pode fazer login.';
-        formCadastro.reset();
+        const resposta = await fetch('/Usuario/registrar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, email, senha })
+        });
 
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 1500);
+        if (resposta.ok) {
+            mensagemSucesso.textContent = 'Cadastro realizado com sucesso! Você já pode fazer login.';
+            formCadastro.reset();
+
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        } else {
+            const erro = await resposta.text();
+            mensagemErro.textContent = erro;
+        }
 
         btnCadastrar.disabled = false;
     });

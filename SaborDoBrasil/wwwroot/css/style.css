@@ -89,10 +89,11 @@ main.principal h2 {
     gap: 10px;
 }
 .publicacao img {
-    width: 100%;
-    border-radius: 10px;
-    max-height: 180px;
-    object-fit: cover;
+    cursor: default !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: none !important;
+    outline: none !important;
 }
 .publicacao h3 {
     color: #D97014;
@@ -359,4 +360,43 @@ footer .social img {
     footer {
         border-radius: 0;
     }
+}
+
+.like, .dislike {
+    background: none;
+    border: 2px solid orange;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5em;
+    color: orange;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin: 0 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.like.active, .dislike.active {
+    background: orange;
+    color: #fff;
+}
+.comentarios {
+    background: none;
+    border: 2px solid orange;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3em;
+    color: orange;
+    cursor: pointer;
+    margin: 0 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+.comentarios.active {
+    background: orange;
+    color: #fff;
 }

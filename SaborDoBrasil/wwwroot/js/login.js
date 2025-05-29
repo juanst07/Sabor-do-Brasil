@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('modal-login').classList.add('active');
         document.getElementById('mensagem-erro').textContent = '';
         document.getElementById('nickname').classList.remove('erro');
-        document.getElementById('ssenha').classList.remove('erro');
+        document.getElementById('senha').classList.remove('erro');
     }
 
     function fecharModalLogin() {
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnEntrar?.addEventListener("click", () => {
         const nickname = document.getElementById("nickname"); // Este campo agora será o e-mail
-        const senha = document.getElementById("ssenha");
+        const senha = document.getElementById("senha"); // Corrigido aqui!
         let erro = false;
 
         nickname.classList.remove('erro');
@@ -48,17 +48,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (erro) return;
 
         const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-        // Agora compara pelo e-mail
-        const usuario = usuarios.find(u => u.email === nickname.value && u.senha === senha.value);
+        const usuario = usuarios.find(u => u.email === nickname.value);
 
-        if (usuario) {
-            localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-            location.reload();
-        } else {
-            mensagemErro.textContent = "E-mail ou senha incorretos.";
+        if (!usuario) {
+            mensagemErro.textContent = "E-mail não cadastrado. Cadastre-se!";
             nickname.classList.add('erro');
-            senha.classList.add('erro');
+            return;
         }
+
+        if (usuario.senha !== senha.value) {
+            mensagemErro.textContent = "Senha incorreta.";
+            senha.classList.add('erro');
+            return;
+        }
+
+        // Login bem-sucedido
+        localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
+        atualizarPerfil();
+        location.reload();
     });
 
     // Exemplo: abrir modal ao tentar interagir sem login
@@ -79,4 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "cadastro.html";
         });
     }
+
+    document.getElementById("btn-login").addEventListener("click", function() {
+        if (localStorage.getItem("usuarioLogado")) {
+            localStorage.removeItem("usuarioLogado");
+            atualizarPerfil();
+            location.reload();
+        }
+    });
 });

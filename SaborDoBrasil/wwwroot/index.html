@@ -16,12 +16,13 @@
 
     <div class="container">
         <aside class="perfil">
-            <img id="logo-empresa" src="img/logo_sabor_do_brasil.png" alt="Logo" width="100">
-            <h2 id="nome-empresa">SABOR BRASIL</h2>
+            <img id="logo-empresa" src="img/user_default.png" alt="Foto de Perfil" width="100">
+            <h2 id="nome-empresa">Guest</h2>
             <hr>
             <p>Likes: <span id="total-likes">0</span></p>
             <p>Dislikes: <span id="total-dislikes">0</span></p>
-            <button id="btn-alterar-perfil">Alterar Perfil</button>
+            <input type="file" id="input-foto" accept="image/*" style="display:none">
+            <button id="btn-alterar-perfil">Alterar Foto do Perfil</button>
         </aside>
 
         <main class="principal">
@@ -32,19 +33,16 @@
                 <h3>Camarão Frito</h3>
                 <p>Micale Maceió-AL</p>
                 <div class="interacoes">
-                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <button class="like" type="button">&#8593;</button>
                     <span class="likes">0</span>
-                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <button class="dislike" type="button">&#8595;</button>
                     <span class="dislikes">0</span>
-                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <button class="comentarios" type="button">&#128172;</button>
                     <span class="num-comentarios">0</span>
                 </div>
-                <div class="comentario-container">
-                    <div class="comentario-usuario">
-                        <span class="comentario-nome">Nome do Usuário</span>
-                    </div>
+                <div class="comentario-container" style="display:none;">
                     <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
-                    <button class="btn-comentar" disabled>Comentar</button>
+                    <button class="btn-comentar" type="button" disabled>Comentar</button>
                     <div class="comentarios-lista"></div>
                 </div>
             </div>
@@ -54,19 +52,16 @@
                 <h3>Bolo de Carne</h3>
                 <p>BR-381 Minas Gerais-MG</p>
                 <div class="interacoes">
-                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <button class="like" title="Like" aria-label="Like">&#8593;</button>
                     <span class="likes">0</span>
-                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <button class="dislike" title="Dislike" aria-label="Dislike">&#8595;</button>
                     <span class="dislikes">0</span>
-                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <button class="comentarios" type="button" title="Comentar" aria-label="Comentar">&#128172;</button>
                     <span class="num-comentarios">0</span>
                 </div>
-                <div class="comentario-container">
-                    <div class="comentario-usuario">
-                        <span class="comentario-nome">Nome do Usuário</span>
-                    </div>
+                <div class="comentario-container" style="display:none;">
                     <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
-                    <button class="btn-comentar" disabled>Comentar</button>
+                    <button class="btn-comentar" type="button" disabled>Comentar</button>
                     <div class="comentarios-lista"></div>
                 </div>
             </div>
@@ -76,19 +71,16 @@
                 <h3>Bife com Legumes</h3>
                 <p>Joaquina Rio de Janeiro-RJ</p>
                 <div class="interacoes">
-                    <img src="img/flecha_cima_vazia.svg" alt="Like" class="like">
+                    <button class="like" title="Like" aria-label="Like">&#8593;</button>
                     <span class="likes">0</span>
-                    <img src="img/flecha_baixo_vazia.svg" alt="Dislike" class="dislike">
+                    <button class="dislike" title="Dislike" aria-label="Dislike">&#8595;</button>
                     <span class="dislikes">0</span>
-                    <img src="img/chat.svg" alt="Comentários" class="comentarios">
+                    <button class="comentarios" type="button" title="Comentar" aria-label="Comentar">&#128172;</button>
                     <span class="num-comentarios">0</span>
                 </div>
-                <div class="comentario-container">
-                    <div class="comentario-usuario">
-                        <span class="comentario-nome">Nome do Usuário</span>
-                    </div>
+                <div class="comentario-container" style="display:none;">
                     <textarea class="comentario-texto" placeholder="Escreva um comentário..." rows="2"></textarea>
-                    <button class="btn-comentar" disabled>Comentar</button>
+                    <button class="btn-comentar" type="button" disabled>Comentar</button>
                     <div class="comentarios-lista"></div>
                 </div>
             </div>
@@ -127,9 +119,9 @@
 
     <script src="js/main.js"></script>
     <script src="js/cadastro.js"></script>
-    <script src="js/interações.js"></script>
-    <script src="js/login.js"></script>
     <script src="js/perfil.js"></script>
+    <script src="js/interacoes.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

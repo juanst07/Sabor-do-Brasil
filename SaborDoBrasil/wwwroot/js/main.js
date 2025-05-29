@@ -120,3 +120,13 @@ document.addEventListener("click", function(e) {
     atualizarPerfilUsuario();
     renderizarPublicacoes();
 });
+
+chatBtn?.addEventListener('click', function () {
+    if (comentarioContainer.style.display === 'block') {
+        comentarioContainer.style.display = 'none';
+        chatBtn.classList.remove('active');
+    } else {
+        comentarioContainer.style.display = 'block';
+        chatBtn.classList.add('active');
+    }
+});
