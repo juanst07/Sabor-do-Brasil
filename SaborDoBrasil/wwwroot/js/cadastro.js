@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const formCadastro = document.getElementById('form-cadastro');
     const btnCadastrar = document.getElementById('btn-cadastrar');
     const mensagemErro = document.getElementById('mensagem-erro');
     const mensagemSucesso = document.getElementById('mensagem-sucesso');
 
-    formCadastro.addEventListener('submit', async function(e) {
+    formCadastro.addEventListener('submit', function (e) {
         e.preventDefault();
         btnCadastrar.disabled = true;
         mensagemErro.textContent = '';
@@ -13,44 +13,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // Coleta os dados do formulário
         const nome = document.getElementById('nome').value.trim();
         const email = document.getElementById('email').value.trim();
-        const senha = document.getElementById('senha').value;
+        const senha = document.getElementById('senha').value.trim();
 
-        // Validação básica
+        // Validação simples
         if (!nome || !email || !senha) {
             mensagemErro.textContent = 'Preencha todos os campos!';
             btnCadastrar.disabled = false;
             return;
         }
 
-        // Verifica se já existe usuário com o mesmo email
-        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-        if (usuarios.some(u => u.email === email)) {
-            mensagemErro.textContent = 'Já existe um usuário com esse e-mail.';
+        // Recupera usuários já cadastrados
+        let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        // Verifica se o e-mail já está cadastrado
+        const usuarioExistente = usuarios.find(u => u.email === email);
+        if (usuarioExistente) {
+            mensagemErro.textContent = 'E-mail já cadastrado!';
             btnCadastrar.disabled = false;
             return;
         }
 
-        // Salva o usuário no localStorage
+        // Adiciona novo usuário
         usuarios.push({ nome, email, senha });
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-        const resposta = await fetch('/Usuario/registrar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nome, email, senha })
-        });
+        mensagemSucesso.textContent = 'Cadastro realizado com sucesso! Você já pode fazer login.';
+        formCadastro.reset();
 
-        if (resposta.ok) {
-            mensagemSucesso.textContent = 'Cadastro realizado com sucesso! Você já pode fazer login.';
-            formCadastro.reset();
-
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1500);
-        } else {
-            const erro = await resposta.text();
-            mensagemErro.textContent = erro;
-        }
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1500);
 
         btnCadastrar.disabled = false;
     });

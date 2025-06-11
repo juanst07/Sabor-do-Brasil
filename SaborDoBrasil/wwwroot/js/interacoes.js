@@ -23,6 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const btnComentar = pub.querySelector('.btn-comentar');
         const comentariosLista = pub.querySelector('.comentarios-lista');
 
+        // Só adiciona eventos se todos os elementos existirem
+        if (!btnLike || !btnDislike || !chatBtn || !numComentariosSpan || !comentarioContainer || !textarea || !btnComentar || !comentariosLista) {
+            return;
+        }
+
         // Like
         btnLike?.addEventListener('click', function () {
             if (!usuarioEstaLogado()) {
@@ -30,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             interagirPublicacao(pubId, "like");
-            alert("Você clicou no LIKE!");
             atualizarTotaisPerfil();
         });
 
@@ -41,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
             interagirPublicacao(pubId, "dislike");
-            alert("Você clicou no DISLIKE!");
             atualizarTotaisPerfil();
         });
 
@@ -79,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             pubObj.comentarios.push(novoComentario);
             localStorage.setItem("publicacoes", JSON.stringify(publicacoes));
             textarea.value = "";
-            btnComentar.disabled = true;
+            btnComentar.disabled = !textarea.value.trim(); // <-- Troque aqui!
             renderizarComentarios(pubId, comentariosLista);
             numComentariosSpan.textContent = pubObj.comentarios.length;
         });

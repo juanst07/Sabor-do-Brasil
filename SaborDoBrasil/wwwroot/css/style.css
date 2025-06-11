@@ -126,12 +126,15 @@ main.principal h2 {
     color: #333;
 }
 .comentario-container {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #0001;
-    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 10px;
-    display: none;
+}
+.comentarios-lista {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 8px;
 }
 .comentario-usuario {
     font-weight: bold;
@@ -144,6 +147,7 @@ main.principal h2 {
     padding: 8px;
     margin-bottom: 8px;
     resize: vertical;
+    min-height: 40px;
 }
 .btn-comentar {
     background: #D97014;
@@ -154,6 +158,7 @@ main.principal h2 {
     float: right;
     font-weight: bold;
     margin-bottom: 10px;
+    align-self: flex-end;
 }
 .btn-comentar:disabled {
     background: #ccc;
