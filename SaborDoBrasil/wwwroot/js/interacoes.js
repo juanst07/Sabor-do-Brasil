@@ -94,14 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
             numComentariosSpan.textContent = pubObj.comentarios.length;
             renderizarComentarios(pubId, comentariosLista);
         }
-
-        // Atalhos de teclado
-        pub.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'c') {
-                comentarioContainer.style.display = comentarioContainer.style.display === 'block' ? 'none' : 'block';
-                chatBtn.classList.toggle('active');
-            }
-        });
     });
 
     // Bloqueia qualquer clique nas imagens das publicações
@@ -233,15 +225,31 @@ function renderizarComentarios(pubId, container) {
     container.innerHTML = "";
     if (!pub?.comentarios) return;
     pub.comentarios.forEach(com => {
-        const agora = new Date(com.data);
-        const data = agora.toLocaleDateString('pt-BR');
-        const horario = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         container.innerHTML += `
             <div class="comentario-item">
                 <span class="comentario-nome"><b>${com.usuario}</b></span>
-                <span style="font-size:0.85em; color:#555; float:right;">${data} ${horario}</span><br>
+                <span style="font-size:0.85em; color:#555; float:right;">${tempoRelativo(com.data)}</span><br>
                 <span class="comentario-texto-visual">${com.texto}</span>
             </div>
         `;
     });
+}
+
+function tempoRelativo(data) {
+    const agora = new Date();
+    const diff = Math.floor((agora - new Date(data)) / 1000); // diferença em segundos
+
+    if (diff < 60) return `há ${diff} segundo${diff === 1 ? '' : 's'}`;
+    const min = Math.floor(diff / 60);
+    if (min < 60) return `há ${min} minuto${min === 1 ? '' : 's'}`;
+    const horas = Math.floor(min / 60);
+    if (horas < 24) return `há ${horas} hora${horas === 1 ? '' : 's'}`;
+    const dias = Math.floor(horas / 24);
+    if (dias < 7) return `há ${dias} dia${dias === 1 ? '' : 's'}`;
+    const semanas = Math.floor(dias / 7);
+    if (semanas < 4) return `há ${semanas} semana${semanas === 1 ? '' : 's'}`;
+    const meses = Math.floor(dias / 30);
+    if (meses < 12) return `há ${meses} mês${meses === 1 ? '' : 'es'}`;
+    const anos = Math.floor(dias / 365);
+    return `há ${anos} ano${anos === 1 ? '' : 's'}`;
 }
